@@ -29,6 +29,7 @@ body {
 }
 
 h1 {
+  margin: 0;
   font-size: 2.2em;
   line-height: 1.1;
 }
@@ -38,6 +39,12 @@ h1 {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 input[type="text"] {
@@ -82,6 +89,16 @@ input[type="text"]:focus-visible,
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+#filter {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.select {
+  font-weight: bold;
 }
 
 ul {

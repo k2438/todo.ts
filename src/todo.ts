@@ -1,19 +1,24 @@
-import { Todo } from "./types"
+import { Todo, Status } from "./types"
 import {
 	todos,
+	status,
 	addTodo,
 	toggleTodo,
 	deleteTodo,
+	filterTodos,
 } from "./actions"
 
 export const setupTodo = () => {
 	const input = document.querySelector<HTMLInputElement>('#input')!
 	const add = document.querySelector<HTMLButtonElement>('#add')!
-	const ul = document.querySelector<HTMLButtonElement>('#todo')!
+	const filter = document.querySelector<HTMLDivElement>('#filter')!
+	const ul = document.querySelector<HTMLButtonElement>('#todos')!
 
-	const setTodos = (todos: Array<Todo>) => {
+	const setTodos = (todos: Todo[], status: Status = 'all') => {
 		let lists = ''
 		todos.map(todo => {
+			if (status === 'todo' && todo.done === true) return
+			if (status === 'done' && todo.done === false) return 
 			lists += `
 				<li id="${todo.id}">
 					<label>
@@ -30,7 +35,7 @@ export const setupTodo = () => {
 	// Add todo
 	add?.addEventListener('click', () => {
 		addTodo(input?.value)
-		setTodos(todos)
+		setTodos(todos, status)
 		input.value = ''
 	})
 
@@ -52,6 +57,25 @@ export const setupTodo = () => {
 			setTodos(todos)
 		}
 	})
+
+	// Filter todo
+	filter.addEventListener('click', function (event) {
+		// display todo
+		const target = event.target as HTMLElement
+		const targetStatus = target.id as Status
+		filterTodos(targetStatus)
+		setTodos(todos, targetStatus)
+		
+		// class name
+		const children = filter.querySelectorAll('span')
+		children.forEach(function(child) {
+			if (child.id === targetStatus) {
+				child.className = 'select'
+			} else {
+				child.className = ''
+			}
+		})
+	})
 	
-	setTodos(todos)
+	setTodos(todos, status)
 }

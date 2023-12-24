@@ -1,6 +1,7 @@
-import { Todo } from "./types"
+import { Todo, Status } from "./types"
 
 export let todos: Todo[] = []
+export let status: Status = 'all'
 
 export const addTodo = (text: string) => {
 	todos = [
@@ -24,4 +25,8 @@ export const toggleTodo = (id: string) => {
 
 export const deleteTodo = (id: string) => {
 	todos = todos.filter(todo => todo.id !== id)
+}
+
+export const filterTodos = (filterStatus: Status) => {
+	status = filterStatus
 }
