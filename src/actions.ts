@@ -21,3 +21,7 @@ export const toggleTodo = (id: string) => {
 		return todo
 	})
 }
+
+export const deleteTodo = (id: string) => {
+	todos = todos.filter(todo => todo.id !== id)
+}

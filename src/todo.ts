@@ -1,5 +1,10 @@
 import { Todo } from "./types"
-import { todos, addTodo, toggleTodo } from "./actions"
+import {
+	todos,
+	addTodo,
+	toggleTodo,
+	deleteTodo,
+} from "./actions"
 
 export const setupTodo = () => {
 	const input = document.querySelector<HTMLInputElement>('#input')!
@@ -15,6 +20,7 @@ export const setupTodo = () => {
 						<input type="checkbox" class="checkbox" ${todo.done ? "checked": ''} />
 						${todo.text}
 					</label>
+					<button class="delete">×</button>
 				</li>
 			`
 		})
@@ -35,6 +41,16 @@ export const setupTodo = () => {
 			const targetTodo = target.closest('li') as HTMLLIElement
 			toggleTodo(targetTodo.id)
     }
+	})
+
+	// Delete todo
+	ul.addEventListener('click', function (event) {
+		const target = event.target as HTMLElement
+		if (target.classList?.contains('delete')) {
+			const targetTodo = target.closest('li') as HTMLLIElement
+			deleteTodo(targetTodo.id)
+			setTodos(todos)
+		}
 	})
 	
 	setTodos(todos)
