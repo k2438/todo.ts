@@ -1,5 +1,5 @@
 import { Todo } from "./types"
-import { todos, addTodo } from "./actions"
+import { todos, addTodo, toggleTodo } from "./actions"
 
 export const setupTodo = () => {
 	const input = document.querySelector<HTMLInputElement>('#input')!
@@ -11,18 +11,31 @@ export const setupTodo = () => {
 		todos.map(todo => {
 			lists += `
 				<li id="${todo.id}">
-					${todo.text}
+					<label>
+						<input type="checkbox" class="checkbox" ${todo.done ? "checked": ''} />
+						${todo.text}
+					</label>
 				</li>
 			`
 		})
 		ul.innerHTML = lists
 	}
 	
+	// Add todo
 	add?.addEventListener('click', () => {
 		addTodo(input?.value)
 		setTodos(todos)
 		input.value = ''
 	})
 
+	// Toggle todo
+	ul.addEventListener('change', function (event) {
+		const target = event.target as HTMLElement
+    if (target.classList?.contains('checkbox')) {
+			const targetTodo = target.closest('li') as HTMLLIElement
+			toggleTodo(targetTodo.id)
+    }
+	})
+	
 	setTodos(todos)
 }

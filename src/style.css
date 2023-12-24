@@ -90,6 +90,52 @@ ul {
   list-style: none;
 }
 
+ul li {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  user-select: none;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  display: flex;
+  align-items: center;
+  gap: 0 .5em;
+  position: relative;
+  margin-bottom: .5em;
+  cursor: pointer;
+
+}
+label:has(:checked) {
+  text-decoration: line-through;
+}
+label::before,
+label:has(:checked)::after {
+  content: '';
+}
+label::before {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #e6edf3;
+}
+label:has(:checked)::before {
+  background-color: #2589d0;
+}
+label:has(:checked)::after {
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  transform: rotate(45deg);
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

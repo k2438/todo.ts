@@ -12,3 +12,12 @@ export const addTodo = (text: string) => {
 		}
 	]
 }
+
+export const toggleTodo = (id: string) => {
+	todos = todos.map(todo => {
+		if (todo.id === id) {
+			return { ...todo, done: !todo.done }
+		}
+		return todo
+	})
+}
