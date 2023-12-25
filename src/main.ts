@@ -1,7 +1,8 @@
 import './style.css'
 import { setupTodo } from './todo'
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+const app = document.querySelector('#app') as HTMLDivElement
+app.innerHTML = `
   <div id="container">
     <h1>todo.ts</h1>
     <div>

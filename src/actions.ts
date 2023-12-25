@@ -1,4 +1,4 @@
-import { Todo, Status } from "./types"
+import { Todo, Status } from './types'
 
 export let todos: Todo[] = []
 export let status: Status = 'all'

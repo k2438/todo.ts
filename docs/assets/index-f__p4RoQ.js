@@ -6,7 +6,7 @@
 					</label>
 					<button class="delete">×</button>
 				</li>
-			`)}),d.innerHTML=r};o==null||o.addEventListener("click",()=>{f(n==null?void 0:n.value),e(c,u),n.value=""}),d.addEventListener("change",function(t){var r;const s=t.target;if((r=s.classList)!=null&&r.contains("checkbox")){const i=s.closest("li");p(i.id)}}),d.addEventListener("click",function(t){var r;const s=t.target;if((r=s.classList)!=null&&r.contains("delete")){const i=s.closest("li");g(i.id),e(c)}}),l.addEventListener("click",function(t){const r=t.target.id;m(r),e(c,r),l.querySelectorAll("span").forEach(function(a){a.id===r?a.className="select":a.className=""})}),e(c,u)};document.querySelector("#app").innerHTML=`
+			`)}),d.innerHTML=r};o==null||o.addEventListener("click",()=>{f(n==null?void 0:n.value),e(c,u),n.value=""}),d.addEventListener("change",function(t){var r;const s=t.target;if((r=s.classList)!=null&&r.contains("checkbox")){const i=s.closest("li");p(i.id)}}),d.addEventListener("click",function(t){var r;const s=t.target;if((r=s.classList)!=null&&r.contains("delete")){const i=s.closest("li");g(i.id),e(c)}}),l.addEventListener("click",function(t){const r=t.target.id;m(r),e(c,r),l.querySelectorAll("span").forEach(function(a){a.id===r?a.className="select":a.className=""})}),e(c,u)},h=document.querySelector("#app");h.innerHTML=`
   <div id="container">
     <h1>todo.ts</h1>
     <div>

@@ -1,4 +1,4 @@
-import { Todo, Status } from "./types"
+import { Todo, Status } from './types'
 import {
 	todos,
 	status,
@@ -6,13 +6,13 @@ import {
 	toggleTodo,
 	deleteTodo,
 	filterTodos,
-} from "./actions"
+} from './actions'
 
 export const setupTodo = () => {
-	const input = document.querySelector<HTMLInputElement>('#input')!
-	const add = document.querySelector<HTMLButtonElement>('#add')!
-	const filter = document.querySelector<HTMLDivElement>('#filter')!
-	const ul = document.querySelector<HTMLButtonElement>('#todos')!
+	const input = document.querySelector('#input') as HTMLInputElement
+	const add = document.querySelector('#add') as HTMLButtonElement
+	const filter = document.querySelector('#filter') as HTMLDivElement
+	const ul = document.querySelector('#todos') as HTMLButtonElement
 
 	const setTodos = (todos: Todo[], status: Status = 'all') => {
 		let lists = ''
@@ -22,7 +22,7 @@ export const setupTodo = () => {
 			lists += `
 				<li id="${todo.id}">
 					<label>
-						<input type="checkbox" class="checkbox" ${todo.done ? "checked": ''} />
+						<input type="checkbox" class="checkbox" ${todo.done ? 'checked': ''} />
 						${todo.text}
 					</label>
 					<button class="delete">×</button>
@@ -42,10 +42,10 @@ export const setupTodo = () => {
 	// Toggle todo
 	ul.addEventListener('change', function (event) {
 		const target = event.target as HTMLElement
-    if (target.classList?.contains('checkbox')) {
+		if (target.classList?.contains('checkbox')) {
 			const targetTodo = target.closest('li') as HTMLLIElement
 			toggleTodo(targetTodo.id)
-    }
+		}
 	})
 
 	// Delete todo

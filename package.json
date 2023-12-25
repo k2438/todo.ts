@@ -5,12 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "lint": "npx eslint src/",
     "build": "tsc && vite build",
-    "build:docs":  "tsc && vite build && rm -rf docs && cp -r dist docs",
+    "build:docs": "tsc && vite build && rm -rf docs && cp -r dist docs",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "^5.2.2",
+    "@typescript-eslint/eslint-plugin": "^5",
+    "@typescript-eslint/parser": "^5",
+    "eslint": "^8",
+    "typescript": "*",
     "vite": "^5.0.8"
   }
 }
